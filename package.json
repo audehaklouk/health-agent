@@ -1,0 +1,24 @@
+{
+  "name": "health-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Verifiable personal health AI agent — runs inside an EigenCompute TDX TEE.",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@hono/node-server": "^1.13.7",
+    "better-sqlite3": "^11.5.0",
+    "hono": "^4.6.13"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^20.17.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

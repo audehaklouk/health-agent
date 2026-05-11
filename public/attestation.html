@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Attestation · health-agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="name">health-agent</span>
+        <a id="teePill" class="tee-pill" href="/attestation.html" hidden></a>
+      </div>
+      <nav>
+        <a href="/">Chat</a>
+        <a href="/payouts.html" style="margin-left:12px">Payouts</a>
+      </nav>
+    </header>
+
+    <!-- Local dev banner — hidden by default, shown by JS when not inside TEE -->
+    <div id="devBanner" class="dev-banner" hidden>
+      DEV PREVIEW — running locally, no TEE guarantees active
+    </div>
+
+    <main class="container container-narrow">
+
+      <!-- Act 1: The problem and the claim -->
+      <section class="hero">
+        <h1>Your health data, verified private.</h1>
+        <p class="lede">
+          Most health AI asks you to trust a privacy policy.
+          This app runs inside a hardware-sealed enclave that the operator
+          cannot open. You don't have to believe that —
+          <strong>you can verify the running code yourself.</strong>
+        </p>
+      </section>
+
+      <!-- Act 2: How it works — 3 steps -->
+      <section class="card">
+        <h2>How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </div>
+            <h3>Upload</h3>
+            <p>Export your Apple Health data as JSON. Upload it through the chat interface.</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <div class="step-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <rect x="10" y="10" width="4" height="4" rx="0.5"/>
+                <line x1="12" y1="8" x2="12" y2="10"/>
+              </svg>
+            </div>
+            <h3>Held inside a TEE</h3>
+            <p>Your raw data sits encrypted inside an Intel TDX enclave. The operator can't read it. The LLM lives outside the enclave (see limits below).</p>
+          </div>
+          <div class="step-arrow">→</div>
+          <div class="step">
+            <div class="step-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3>Chat</h3>
+            <p>Ask questions grounded in your own data. The agent surfaces patterns — it does not give medical advice.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Act 3: Live attestation data -->
+      <section class="card">
+        <h2>What's proven</h2>
+        <p class="muted" style="margin-top:0">
+          Live values from this instance. The external verifier independently
+          confirms the running container matches the registered image.
+        </p>
+        <div class="kv">
+          <div><span>TEE Status</span><b id="kInsideTEE">…</b></div>
+          <div><span>Network</span><b id="kNetwork">…</b></div>
+          <div><span>App ID</span><b id="kAppId">…</b></div>
+          <!-- TODO: wire image digest through /api/attestation once available from ecloud SDK -->
+          <div><span>Image Digest</span><b id="kImageDigest" class="muted">[will populate on deploy]</b></div>
+          <div><span>Instance Type</span><b>g1-micro-1v</b></div>
+        </div>
+        <div class="verify-cta">
+          <a id="verifyLink" class="big-button" target="_blank" rel="noopener">
+            View attestation on EigenCloud →
+          </a>
+          <p class="muted verify-subtext">
+            Opens the EigenCloud dashboard for this app. The platform currently
+            shows 0% on most checks — 3 of 6 are "coming soon" platform features
+            and the remaining 3 require registration steps not yet completed.
+            The raw attestation data (app ID, image digest, KMS key) is shown above.
+          </p>
+        </div>
+      </section>
+
+      <!-- Honest limits -->
+      <section class="card card-warn">
+        <h2>What this does NOT cover</h2>
+        <ul class="bullet-list">
+          <li>
+            <strong>The model provider can see your prompts.</strong>
+            The EigenAI gateway proxies requests to the inference provider
+            (Anthropic). It does not run inference inside a TEE. Your prompts
+            and the model's responses are visible to the provider in transit.
+          </li>
+          <li>
+            End-to-end private inference (where the model itself runs inside
+            an enclave) is a v2 goal, not a v1 guarantee.
+          </li>
+          <li>
+            Mainnet-alpha allows developers to upgrade deployed code.
+            Full upgrade-resistance ships in a later EigenCompute phase.
+          </li>
+          <li>
+            Single KMS node, operated by EigenLabs. No production SLA —
+            this is a preview environment.
+          </li>
+        </ul>
+      </section>
+
+      <!-- KMS public key — collapsible -->
+      <section class="card">
+        <button class="collapse-toggle" id="kmsToggle" aria-expanded="false">
+          <span>KMS public key</span>
+          <span class="collapse-chevron">▸</span>
+        </button>
+        <div class="collapse-body" id="kmsBody" hidden>
+          <p class="muted">
+            The signing key this enclave uses to attest its identity.
+            Only available when running inside the TEE.
+          </p>
+          <pre id="kmsPubKey">(only available inside the TEE)</pre>
+        </div>
+      </section>
+
+      <section class="footer-note">
+        <p>
+          Built for the EigenCompute private preview cohort (mainnet-alpha).<br/>
+          Verify a code hash. Skip the privacy policy.
+        </p>
+      </section>
+    </main>
+
+    <script src="/attestation.js"></script>
+  </body>
+</html>

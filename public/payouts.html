@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payouts · health-agent</title>
+    <link rel="stylesheet" href="/styles.css?v=8" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="name">health-agent</span>
+        <a id="teePill" class="tee-pill" href="/attestation.html" hidden></a>
+      </div>
+      <nav>
+        <a href="/">Chat</a>
+        <a href="/payouts.html" style="margin-left:12px;font-weight:600">Payouts</a>
+        <a href="/attestation.html" style="margin-left:12px">Attestation</a>
+      </nav>
+    </header>
+
+    <main class="container" style="max-width:900px">
+      <section class="hero" style="padding-bottom:0">
+        <h1>Contributor payouts</h1>
+        <p class="lede">Every query pays the cohort contributors whose data informed the response.</p>
+      </section>
+
+      <!-- Stats cards -->
+      <div class="payouts-stats" id="payoutsStats">
+        <div class="stat-card">
+          <span class="stat-value" id="statTotalUsdc">--</span>
+          <span class="stat-label">Total USDC paid</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="statTotalQueries">--</span>
+          <span class="stat-label">Queries</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="statUniqueContribs">--</span>
+          <span class="stat-label">Contributors</span>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div id="filterBar" class="payouts-filter" hidden>
+        <span>Filtering by: <b id="filterAddress"></b></span>
+        <button id="filterClear" class="payouts-filter-clear">Clear</button>
+      </div>
+
+      <!-- Table -->
+      <section class="card" style="padding:0;overflow:hidden">
+        <table class="payouts-table" id="payoutsTable">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Query</th>
+              <th>Contributor</th>
+              <th>Address</th>
+              <th class="col-right">Amount</th>
+            </tr>
+          </thead>
+          <tbody id="payoutsBody">
+            <tr><td colspan="5" class="payouts-loading">Loading payouts...</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Honesty footer -->
+      <div class="contrib-badge" style="max-width:640px;margin:0 auto">
+        Demo data shown — mock USDC payouts, real on-chain transfers planned for v2.
+        Contributor addresses are deterministic hashes, not real wallets.
+      </div>
+
+      <footer class="footer-note">
+        <p>
+          <a href="/">← Back to chat</a>
+        </p>
+      </footer>
+    </main>
+
+    <script src="/payouts.js?v=1"></script>
+  </body>
+</html>

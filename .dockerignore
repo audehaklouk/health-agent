@@ -1,0 +1,15 @@
+node_modules
+dist
+.env
+.env.*
+.git
+.gitignore
+.vscode
+.idea
+*.log
+data/*.db
+data/*.db-shm
+data/*.db-wal
+README.md
+BUILD-PLAN.md
+.DS_Store

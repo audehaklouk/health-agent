@@ -1,0 +1,138 @@
+{
+  "health_summary": {
+    "windows": { "from": "2026-04-11T00:00:00.000Z", "to": "2026-05-11T00:00:00.000Z" },
+    "metrics": {
+      "resting_heart_rate": { "unit": "bpm", "count": 30, "last30days": { "mean": 62, "min": 56, "max": 68 } },
+      "step_count": { "unit": "steps", "count": 30, "last30days": { "mean": 8400, "min": 4200, "max": 13100 } },
+      "sleep_analysis": { "unit": "hours", "count": 30, "last30days": { "mean": 7.1, "min": 5.8, "max": 8.4 } }
+    },
+    "workouts": {
+      "count30d": 14,
+      "totalMinutes30d": 630,
+      "byType30d": { "Running": { "count": 8, "minutes": 380 }, "Strength Training": { "count": 6, "minutes": 250 } }
+    }
+  },
+  "query": "How does my sleep compare to similar profiles?",
+  "reply": "Your 30-day sleep average of 7.1 hours is in the healthy range — 60% of US adults land between 7 and 9 hours.\n\nCompared to the reference cohort: you're sleeping slightly less than the casual runner [1] (7.4h) and the CrossFit regular [2] (7.6h), both of whom protect consistent bedtimes as part of their training routines. The yoga + hiking persona [3] (7.5h) is your closest match — similar activity level, similar sleep. The new parent [4] (5.7h) is significantly below you; his fragmented sleep pattern is common in early parenthood and falls in the short-sleep band where about 29% of men 18-44 land.\n\nYour minimum of 5.8h suggests some nights are still short. The 2.6-hour gap between your best (8.4h) and worst nights is worth watching — if the short nights cluster around specific days, that's a pattern you could act on.\n\nThis is decision-support context, not medical advice. If sleep quality feels poor despite adequate duration, that's worth raising with a clinician.",
+  "contributors": [
+    {
+      "id": "p_002",
+      "label": "casual runner, F, age 25-29",
+      "narrative_summary": "Logs 3 weekday morning runs of 30-45 minutes plus a weekend long run. Sleep is decent because she protects an 11pm bedtime.",
+      "similarity_score": 0.821,
+      "context_weight": 0.29,
+      "mock_payout_usd": 0.145,
+      "address": "0x4c937000ad4d03367c42f6a0976a3e248470272e",
+      "source_notes": {
+        "resting_hr_bpm": "Within trained-recreational range; avram_2019 reports women 18-44 middle 50% spans roughly 62-78 bpm with lower values among regular exercisers.",
+        "steps_daily_avg": "tudor_locke_2011 'somewhat active' band (7500-9999); higher end consistent with sub-elite runner.",
+        "sleep_hours_avg": "Within nhanes_2007_2010_sleep 7-9h healthy range (60.4% of adults).",
+        "active_minutes_weekly": "Exceeds cdc_pa_guidelines_2018 150-min moderate threshold; within 150-300 recommended range.",
+        "workout_sessions_weekly": "Meets aerobic frequency expected for cdc_pa_2024 guideline-meeters."
+      }
+    },
+    {
+      "id": "p_008",
+      "label": "CrossFit regular, F, age 28-33",
+      "narrative_summary": "Five class sessions weekly mixing strength, conditioning, and Olympic lifts. Adds easy zone-2 cardio on rest days for recovery.",
+      "similarity_score": 0.778,
+      "context_weight": 0.27,
+      "mock_payout_usd": 0.135,
+      "address": "0xdbd4e2084bd272039cfde4fe10fdeddbf5752d8f",
+      "source_notes": {
+        "resting_hr_bpm": "Lower bound of reimers_2018 trained-recreational range; appropriate for HIIT/strength-trained female.",
+        "steps_daily_avg": "tudor_locke_2011 'somewhat active'; CrossFit doesn't generate huge step counts but lifestyle is active.",
+        "sleep_hours_avg": "Within nhanes_2007_2010_sleep healthy range; serious recreational athletes often prioritize sleep.",
+        "active_minutes_weekly": "Exceeds cdc_pa_guidelines_2018 150-300 min range; supports high-volume training.",
+        "workout_sessions_weekly": "Exceeds muscle-strengthening 2-day minimum from cdc_pa_guidelines_2018."
+      }
+    },
+    {
+      "id": "p_010",
+      "label": "yoga + hiking, F, age 45-52",
+      "narrative_summary": "Three yoga classes plus 1-2 longer hikes weekly. Lifts light weights twice a week. Sleep is consistent thanks to a stable bedtime.",
+      "similarity_score": 0.714,
+      "context_weight": 0.25,
+      "mock_payout_usd": 0.125,
+      "address": "0x67bb3806959f761aaec1c73ad049f189be4df3b2",
+      "source_notes": {
+        "resting_hr_bpm": "Within avram_2019 active-female-midlife range; moderate aerobic conditioning.",
+        "steps_daily_avg": "tudor_locke_2011 'somewhat active'.",
+        "sleep_hours_avg": "Within nhis_2020_sleep healthy range; women 45-64 30.7% <7h, so this persona is in the 69% who meet guideline.",
+        "active_minutes_weekly": "Exceeds cdc_pa_guidelines_2018 150-min threshold.",
+        "workout_sessions_weekly": "Meets muscle-strengthening 2-day minimum (yoga + light weights)."
+      }
+    },
+    {
+      "id": "p_005",
+      "label": "new parent, low sleep, M, age 30-34",
+      "narrative_summary": "Activity dropped after his second kid. Sleep is fragmented across nights — total time in bed is fine but consolidated sleep is short.",
+      "similarity_score": 0.592,
+      "context_weight": 0.19,
+      "mock_payout_usd": 0.095,
+      "address": "0x726b4a8f2e4e3361e70d0c5ba3966deeffae05ca",
+      "source_notes": {
+        "resting_hr_bpm": "Matches ostchega_2011 NHANES adult mean (72 bpm); typical for moderately-active middle-young male.",
+        "steps_daily_avg": "tudor_locke_2011 'low active' band (5000-7499).",
+        "sleep_hours_avg": "Within nhis_2020_sleep short-sleep band; 28.8% of men 18-44 report <7h, sleep fragmentation common in early parenthood.",
+        "active_minutes_weekly": "Below cdc_pa_guidelines_2018 150-min threshold; consistent with reduced volume in parenting years.",
+        "workout_sessions_weekly": "Partial adherence to aerobic guideline; no muscle-strengthening compliance."
+      }
+    }
+  ],
+  "payouts": [
+    { "contributor_id": "p_002", "address": "0x4c937000ad4d03367c42f6a0976a3e248470272e", "query_fee_share_usdc": 0.145000, "weight": 0.29 },
+    { "contributor_id": "p_008", "address": "0xdbd4e2084bd272039cfde4fe10fdeddbf5752d8f", "query_fee_share_usdc": 0.135000, "weight": 0.27 },
+    { "contributor_id": "p_010", "address": "0x67bb3806959f761aaec1c73ad049f189be4df3b2", "query_fee_share_usdc": 0.125000, "weight": 0.25 },
+    { "contributor_id": "p_005", "address": "0x726b4a8f2e4e3361e70d0c5ba3966deeffae05ca", "query_fee_share_usdc": 0.095000, "weight": 0.19 }
+  ],
+  "references_used": {
+    "avram_2019": "Avram R, Tison GH, Aschbacher K, et al. Real-world heart rate norms in the Health eHeart study. NPJ Digit Med. 2019;2:58. doi:10.1038/s41746-019-0134-9. n=92,457 US adults; mean real-world HR 79.1 ± 14.5 bpm; women ~4 bpm higher than men.",
+    "tudor_locke_2011": "Tudor-Locke C, Craig CL, Brown WJ, et al. How many steps/day are enough? For adults. Int J Behav Nutr Phys Act. 2011;8:79. Step-defined zones: <5000 sedentary, 5000-7499 low active, 7500-9999 somewhat active, 10000-12499 active, ≥12500 highly active.",
+    "nhanes_2007_2010_sleep": "Frenk SM, Chong Y. QuickStats: Sleep duration among adults aged ≥20 years, by race/ethnicity — NHANES 2007-2010. MMWR. 2013. 60.4% slept 7-9h; 37.3% slept ≤6h; 2.3% slept ≥10h.",
+    "nhis_2020_sleep": "Adjaye-Gbewonyo D, Ng AE, Black LI. QuickStats: Percentage of adults aged ≥18 years who sleep <7 hours, by sex and age group — NHIS 2020. MMWR Morb Mortal Wkly Rep. 2022;71(10):393.",
+    "reimers_2018": "Reimers AK, Knapp G, Reimers CD. Effects of exercise on the resting heart rate: A systematic review and meta-analysis of interventional studies. J Clin Med. 2018;7(12):503. PMC6306777.",
+    "cdc_pa_guidelines_2018": "U.S. Department of Health and Human Services. Physical Activity Guidelines for Americans, 2nd edition. 2018.",
+    "cdc_pa_2024": "Centers for Disease Control and Prevention. National Health Interview Survey 2024. 47.2% of US adults met the aerobic physical activity guideline.",
+    "ostchega_2011": "Ostchega Y, Porter KS, Hughes J, Dillon CF, Nwankwo T. Resting pulse rate reference data for children, adolescents, and adults: United States, 1999-2008. Natl Health Stat Report. 2011;(41):1-16."
+  },
+  "query_price_mock_usd": 0.50,
+  "attestation_ref": "0x856D48F3D64125DeBD882e341E27D8F6656Ba623",
+  "via_gateway": true,
+  "receipt": {
+    "receipt_version": "0.1-mock",
+    "issued_by": {
+      "app_id": "0x856D48F3D64125DeBD882e341E27D8F6656Ba623",
+      "tee_status": "TDX (Intel)",
+      "kms_pubkey": null
+    },
+    "query": {
+      "text": "How does my sleep compare to similar profiles?",
+      "user_data_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "timestamp_iso": "2026-05-12T00:00:00.000Z"
+    },
+    "response": {
+      "text_hash": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+      "model": "anthropic/claude-sonnet-4-5",
+      "via_gateway": true
+    },
+    "contributors": [
+      { "id": "p_002", "label": "casual runner, F, age 25-29", "context_weight": 0.29, "mock_payout_usd": 0.145, "address": "0x4c937000ad4d03367c42f6a0976a3e248470272e" },
+      { "id": "p_008", "label": "CrossFit regular, F, age 28-33", "context_weight": 0.27, "mock_payout_usd": 0.135, "address": "0xdbd4e2084bd272039cfde4fe10fdeddbf5752d8f" },
+      { "id": "p_010", "label": "yoga + hiking, F, age 45-52", "context_weight": 0.25, "mock_payout_usd": 0.125, "address": "0x67bb3806959f761aaec1c73ad049f189be4df3b2" },
+      { "id": "p_005", "label": "new parent, low sleep, M, age 30-34", "context_weight": 0.19, "mock_payout_usd": 0.095, "address": "0x726b4a8f2e4e3361e70d0c5ba3966deeffae05ca" }
+    ],
+    "payouts": [
+      { "contributor_id": "p_002", "address": "0x4c937000ad4d03367c42f6a0976a3e248470272e", "query_fee_share_usdc": 0.145000, "weight": 0.29 },
+      { "contributor_id": "p_008", "address": "0xdbd4e2084bd272039cfde4fe10fdeddbf5752d8f", "query_fee_share_usdc": 0.135000, "weight": 0.27 },
+      { "contributor_id": "p_010", "address": "0x67bb3806959f761aaec1c73ad049f189be4df3b2", "query_fee_share_usdc": 0.125000, "weight": 0.25 },
+      { "contributor_id": "p_005", "address": "0x726b4a8f2e4e3361e70d0c5ba3966deeffae05ca", "query_fee_share_usdc": 0.095000, "weight": 0.19 }
+    ],
+    "query_price_mock_usd": 0.50,
+    "signature": {
+      "scheme": "mock-v0.1",
+      "value": "not-yet-signed:per-response-signing-is-v2",
+      "note": "v1 signs the running container, not individual responses. See /attestation."
+    }
+  }
+}

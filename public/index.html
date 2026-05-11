@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>health-agent</title>
+    <link rel="stylesheet" href="/styles.css?v=8" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="name">health-agent</span>
+        <span id="demoBadge" class="demo-badge" hidden>DEMO</span>
+        <a id="teePill" class="tee-pill" href="/attestation.html" hidden></a>
+      </div>
+      <nav>
+        <a href="/payouts.html">Payouts</a>
+        <a href="/attestation.html" style="margin-left:12px">Attestation →</a>
+      </nav>
+    </header>
+
+    <main class="chat-layout">
+      <!-- LEFT: Chat pane -->
+      <div class="chat-pane">
+        <section id="upload-card" class="card">
+          <h2>Upload your Apple Health export</h2>
+          <p class="muted">
+            Get the
+            <a href="https://www.healthexportapp.com/" target="_blank" rel="noopener">Health Auto Export</a>
+            iOS app, export as JSON, drop the file here. Decrypted only inside the TEE.
+          </p>
+          <div id="dropzone" class="dropzone">
+            <input type="file" id="fileInput" accept="application/json,.json" />
+            <p>Drop a JSON file or click to choose</p>
+            <p id="uploadStatus" class="status"></p>
+          </div>
+        </section>
+
+        <section id="chat-card" class="card">
+          <h2>Ask the agent</h2>
+          <div id="messages" class="messages">
+            <div class="msg msg-bot">
+              Upload your Apple Health export above, then ask me anything.
+              Examples: <em>how is my sleep trending?</em>,
+              <em>compare my activity to similar profiles</em>,
+              <em>am I overtraining?</em>
+            </div>
+          </div>
+          <form id="chatForm" class="chat-form">
+            <input id="chatInput" type="text" placeholder="Ask a question..." autocomplete="off" />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </div>
+
+      <!-- RIGHT: Contributors panel -->
+      <div class="contrib-pane">
+        <div id="contribPanel" class="card contrib-panel">
+          <h2>Cohort contributors</h2>
+          <div id="contribContent" class="contrib-empty">
+            <p class="muted">Upload health data and ask a question to see which cohort personas informed the response.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Gateway status line (shown when direct inference fallback is active) -->
+    <div id="gatewayStatus" class="gateway-status" hidden>
+      Direct inference path active — gateway integration pending platform fix.
+    </div>
+
+    <!-- Receipt modal -->
+    <div id="receiptOverlay" class="receipt-overlay" hidden>
+      <div class="receipt-panel">
+        <div class="receipt-header">
+          <h3>Response Receipt</h3>
+          <p class="receipt-honesty">v0.1 mock signature. Per-response cryptographic signing inside the TEE is a v2 goal. The container-level attestation is live — see <a href="/attestation.html">/attestation</a>.</p>
+        </div>
+        <pre id="receiptJson" class="receipt-json"></pre>
+        <div class="receipt-actions">
+          <button id="receiptCopy" class="receipt-btn receipt-btn-copy">Copy JSON</button>
+          <button id="receiptClose" class="receipt-btn receipt-btn-close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-note">
+      <p>
+        Verifiable health agent on EigenCompute TDX TEE. The operator cannot read your data.
+        <a href="/attestation.html">See proof →</a>
+      </p>
+    </footer>
+
+    <script src="/app.js?v=6"></script>
+  </body>
+</html>
