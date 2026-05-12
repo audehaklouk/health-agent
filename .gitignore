@@ -2,7 +2,8 @@ node_modules
 dist
 .env
 .env.local
-data/
+data/*
+!data/personas.json
 *.log
 .DS_Store
 .vscode

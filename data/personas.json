@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0",
+  "construction_note": "All values placed within published distribution bands from the references below. Population sources do not provide named-cohort means; values within each persona are illustrative points inside the cited bands, not point estimates from a specific table. Selected to span the actual US adult distribution across activity level, age, sex, and sleep pattern.",
+  "references": {
+    "ostchega_2011": "Ostchega Y, Porter KS, Hughes J, Dillon CF, Nwankwo T. Resting pulse rate reference data for children, adolescents, and adults: United States, 1999-2008. Natl Health Stat Report. 2011;(41):1-16. PMID: 21905522. Adult mean RPR 72 bpm; max ~92 bpm.",
+    "avram_2019": "Avram R, Tison GH, Aschbacher K, et al. Real-world heart rate norms in the Health eHeart study. NPJ Digit Med. 2019;2:58. doi:10.1038/s41746-019-0134-9. n=92,457 US adults; mean real-world HR 79.1 ± 14.5 bpm; women ~4 bpm higher than men.",
+    "reimers_2018": "Reimers AK, Knapp G, Reimers CD. Effects of exercise on the resting heart rate: A systematic review and meta-analysis of interventional studies. J Clin Med. 2018;7(12):503. PMC6306777. Endurance athletes typical RHR 40-60 bpm; elite as low as 30 bpm.",
+    "bassett_2010": "Bassett DR Jr, Wyatt HR, Thompson H, Peters JC, Hill JO. Pedometer-measured physical activity in U.S. adults. Med Sci Sports Exerc. 2010;42(10):1819-1825. NHANES 2005-2006 accelerometer (n=3744 adults ≥20y): mean 9,676 uncensored / 6,540 censored steps/day.",
+    "tudor_locke_2011": "Tudor-Locke C, Craig CL, Brown WJ, et al. How many steps/day are enough? For adults. Int J Behav Nutr Phys Act. 2011;8:79. Step-defined zones: <5000 sedentary, 5000-7499 low active, 7500-9999 somewhat active, 10000-12499 active, ≥12500 highly active.",
+    "tudor_locke_2013_older": "Tudor-Locke C, Schuna JM Jr, Barreira TV, et al. Normative steps/day values for older adults: NHANES 2005-2006. J Gerontol A Biol Sci Med Sci. 2013. PMID: 23913932. Sex-and-age-specific norms for adults 60+.",
+    "sisson_2012": "Sisson SB, Camhi SM, Tudor-Locke C, et al. Characteristics of step-defined physical activity categories in U.S. adults. Am J Health Promot. 2012;26(3):152-159. US adult distribution: 36.1% sedentary, 47.6% low-to-somewhat-active, 16.3% active-to-highly-active.",
+    "nhis_2020_sleep": "Adjaye-Gbewonyo D, Ng AE, Black LI. QuickStats: Percentage of adults aged ≥18 years who sleep <7 hours, by sex and age group — NHIS 2020. MMWR Morb Mortal Wkly Rep. 2022;71(10):393. DOI: 10.15585/mmwr.mm7110a6. M 18-44: 28.8% <7h; F 18-44: 25.6%; M 45-64: 31.1%; F 45-64: 30.7%; M 65+: 22.6%; F 65+: 25.5%.",
+    "nhanes_2007_2010_sleep": "Frenk SM, Chong Y. QuickStats: Sleep duration among adults aged ≥20 years, by race/ethnicity — NHANES 2007-2010. MMWR. 2013. 60.4% slept 7-9h; 37.3% slept ≤6h; 2.3% slept ≥10h.",
+    "brfss_2020_sleep": "Pankowska MM, Lu H, Wheaton AG, et al. Prevalence and geographic patterns of self-reported short sleep duration among US adults, 2020. Prev Chronic Dis. 2023;20:E53. PMID: 37384831. 33.2% of adults report <7h.",
+    "shockey_2017_shift": "Shockey TM, Wheaton AG. Short sleep duration by occupation group — 29 states, 2013-2014. MMWR Morb Mortal Wkly Rep. 2017;66(8):207-213. PMC5657897. Shift work occupations show significantly elevated short-sleep prevalence vs day workers.",
+    "cdc_pa_guidelines_2018": "U.S. Department of Health and Human Services. Physical Activity Guidelines for Americans, 2nd edition. 2018. Adults: 150-300 min/wk moderate-intensity OR 75-150 min/wk vigorous-intensity aerobic, plus muscle-strengthening 2+ days/wk.",
+    "cdc_pa_2024": "Centers for Disease Control and Prevention. National Health Interview Survey 2024. 47.2% of US adults met the aerobic physical activity guideline (52.3% men, 42.4% women)."
+  },
+  "personas": [
+    {
+      "id": "p_001",
+      "label": "sedentary office worker, M, age 28-32",
+      "narrative_summary": "Desk-bound during work hours with minimal structured exercise. Walks for errands but rarely hits a full hour of intentional activity in a week.",
+      "profile": {
+        "age_band": [28, 32],
+        "sex": "M",
+        "resting_hr_bpm": 75,
+        "steps_daily_avg": 4500,
+        "sleep_hours_avg": 6.5,
+        "active_minutes_weekly": 60,
+        "workout_sessions_weekly": 1
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Within ostchega_2011 adult range (mean 72, max ~92); plausible for sedentary younger adult per avram_2019 real-world distribution.",
+        "steps_daily_avg": "Tudor-Locke 'sedentary' band (<5000); matches sisson_2012 finding that 36.1% of US adults fall in this band.",
+        "sleep_hours_avg": "Within short-sleep band (<7h); nhis_2020_sleep reports 28.8% of men 18-44 sleep <7h.",
+        "active_minutes_weekly": "Below cdc_pa_guidelines_2018 150-min threshold; consistent with the ~48% of men not meeting aerobic guideline (cdc_pa_2024).",
+        "workout_sessions_weekly": "Does not meet 2-day muscle-strengthening guideline (cdc_pa_guidelines_2018)."
+      }
+    },
+    {
+      "id": "p_002",
+      "label": "casual runner, F, age 25-29",
+      "narrative_summary": "Logs 3 weekday morning runs of 30-45 minutes plus a weekend long run. Sleep is decent because she protects an 11pm bedtime.",
+      "profile": {
+        "age_band": [25, 29],
+        "sex": "F",
+        "resting_hr_bpm": 67,
+        "steps_daily_avg": 9200,
+        "sleep_hours_avg": 7.4,
+        "active_minutes_weekly": 180,
+        "workout_sessions_weekly": 3
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Within trained-recreational range; avram_2019 reports women 18-44 middle 50% spans roughly 62-78 bpm with lower values among regular exercisers.",
+        "steps_daily_avg": "tudor_locke_2011 'somewhat active' band (7500-9999); higher end consistent with sub-elite runner.",
+        "sleep_hours_avg": "Within nhanes_2007_2010_sleep 7-9h healthy range (60.4% of adults).",
+        "active_minutes_weekly": "Exceeds cdc_pa_guidelines_2018 150-min moderate threshold; within 150-300 recommended range.",
+        "workout_sessions_weekly": "Meets aerobic frequency expected for cdc_pa_2024 guideline-meeters."
+      }
+    },
+    {
+      "id": "p_003",
+      "label": "competitive cyclist, M, age 34-38",
+      "narrative_summary": "Trains 10-12 hours per week on a polarized model — most volume easy, threshold work midweek, hard group rides on weekends.",
+      "profile": {
+        "age_band": [34, 38],
+        "sex": "M",
+        "resting_hr_bpm": 48,
+        "steps_daily_avg": 7800,
+        "sleep_hours_avg": 7.8,
+        "active_minutes_weekly": 540,
+        "workout_sessions_weekly": 6
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Within reimers_2018 endurance-athlete range (40-60 bpm); typical for trained but non-elite competitive cyclist.",
+        "steps_daily_avg": "tudor_locke_2011 'somewhat active'; cyclists accumulate less step volume than runners due to cycling not generating steps.",
+        "sleep_hours_avg": "Within nhanes_2007_2010_sleep healthy range; serious recreational athletes commonly prioritize sleep.",
+        "active_minutes_weekly": "Far exceeds cdc_pa_guidelines_2018 vigorous threshold (75-150 min); consistent with 10+ hr/wk training volume.",
+        "workout_sessions_weekly": "Daily training pattern common in cycling at this volume."
+      }
+    },
+    {
+      "id": "p_004",
+      "label": "masters marathoner, F, age 38-42",
+      "narrative_summary": "Marathon training block of 50+ miles per week across 5-6 runs. Long run Sunday, quality day midweek, easy aerobic the rest.",
+      "profile": {
+        "age_band": [38, 42],
+        "sex": "F",
+        "resting_hr_bpm": 54,
+        "steps_daily_avg": 11500,
+        "sleep_hours_avg": 7.2,
+        "active_minutes_weekly": 420,
+        "workout_sessions_weekly": 6
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Within reimers_2018 endurance-trained range (40-60); females typically 3-5 bpm above male equivalent per avram_2019.",
+        "steps_daily_avg": "tudor_locke_2011 'active' band (10000-12499); appropriate for 50mi/wk training volume.",
+        "sleep_hours_avg": "Within nhanes_2007_2010_sleep healthy range.",
+        "active_minutes_weekly": "Substantially exceeds cdc_pa_guidelines_2018; consistent with marathon training block.",
+        "workout_sessions_weekly": "Typical for masters marathon training; reimers_2018 references endurance athlete training frequency."
+      }
+    },
+    {
+      "id": "p_005",
+      "label": "new parent, low sleep, M, age 30-34",
+      "narrative_summary": "Activity dropped after his second kid. Sleep is fragmented across nights — total time in bed is fine but consolidated sleep is short.",
+      "profile": {
+        "age_band": [30, 34],
+        "sex": "M",
+        "resting_hr_bpm": 72,
+        "steps_daily_avg": 5800,
+        "sleep_hours_avg": 5.7,
+        "active_minutes_weekly": 100,
+        "workout_sessions_weekly": 2
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Matches ostchega_2011 NHANES adult mean (72 bpm); typical for moderately-active middle-young male.",
+        "steps_daily_avg": "tudor_locke_2011 'low active' band (5000-7499).",
+        "sleep_hours_avg": "Within nhis_2020_sleep short-sleep band; 28.8% of men 18-44 report <7h, sleep fragmentation common in early parenthood.",
+        "active_minutes_weekly": "Below cdc_pa_guidelines_2018 150-min threshold; consistent with reduced volume in parenting years.",
+        "workout_sessions_weekly": "Partial adherence to aerobic guideline; no muscle-strengthening compliance."
+      }
+    },
+    {
+      "id": "p_006",
+      "label": "retired, active walker, F, age 62-68",
+      "narrative_summary": "Walks 45-60 minutes most mornings, twice-weekly water aerobics, weekend hikes when weather is good.",
+      "profile": {
+        "age_band": [62, 68],
+        "sex": "F",
+        "resting_hr_bpm": 70,
+        "steps_daily_avg": 7800,
+        "sleep_hours_avg": 7.1,
+        "active_minutes_weekly": 240,
+        "workout_sessions_weekly": 5
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Within ostchega_2011 older-adult range; modest age-related elevation moderated by regular activity.",
+        "steps_daily_avg": "tudor_locke_2013_older 'somewhat active' for adults 60+ exceeding median.",
+        "sleep_hours_avg": "Within nhis_2020_sleep healthy range; women 65+ less likely to be short sleepers (25.5% <7h).",
+        "active_minutes_weekly": "Exceeds cdc_pa_guidelines_2018 150-min adult/older-adult threshold.",
+        "workout_sessions_weekly": "Daily-walking + water-aerobics pattern; meets muscle-strengthening with aerobics."
+      }
+    },
+    {
+      "id": "p_007",
+      "label": "college student, irregular schedule, M, age 19-22",
+      "narrative_summary": "Inconsistent week-to-week — exam weeks crash to near-sedentary, off-weeks include 3-4 pickup-basketball or gym sessions. Sleep schedule is chaotic.",
+      "profile": {
+        "age_band": [19, 22],
+        "sex": "M",
+        "resting_hr_bpm": 73,
+        "steps_daily_avg": 6500,
+        "sleep_hours_avg": 6.2,
+        "active_minutes_weekly": 130,
+        "workout_sessions_weekly": 2.5
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Within ostchega_2011 young-adult range; younger adults trend slightly higher real-world per avram_2019.",
+        "steps_daily_avg": "tudor_locke_2011 'low active' band; college campuses generate moderate ambient walking.",
+        "sleep_hours_avg": "Within nhis_2020_sleep short-sleep band common in 18-44; college populations skew toward short, irregular sleep.",
+        "active_minutes_weekly": "Just below cdc_pa_guidelines_2018 150-min threshold; reflects week-to-week variability.",
+        "workout_sessions_weekly": "Partial adherence; recreational rather than structured."
+      }
+    },
+    {
+      "id": "p_008",
+      "label": "CrossFit regular, F, age 28-33",
+      "narrative_summary": "Five class sessions weekly mixing strength, conditioning, and Olympic lifts. Adds easy zone-2 cardio on rest days for recovery.",
+      "profile": {
+        "age_band": [28, 33],
+        "sex": "F",
+        "resting_hr_bpm": 60,
+        "steps_daily_avg": 9000,
+        "sleep_hours_avg": 7.6,
+        "active_minutes_weekly": 300,
+        "workout_sessions_weekly": 5
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Lower bound of reimers_2018 trained-recreational range; appropriate for HIIT/strength-trained female.",
+        "steps_daily_avg": "tudor_locke_2011 'somewhat active'; CrossFit doesn't generate huge step counts but lifestyle is active.",
+        "sleep_hours_avg": "Within nhanes_2007_2010_sleep healthy range; serious recreational athletes often prioritize sleep.",
+        "active_minutes_weekly": "Exceeds cdc_pa_guidelines_2018 150-300 min range; supports high-volume training.",
+        "workout_sessions_weekly": "Exceeds muscle-strengthening 2-day minimum from cdc_pa_guidelines_2018."
+      }
+    },
+    {
+      "id": "p_009",
+      "label": "shift worker, disrupted sleep, M, age 40-46",
+      "narrative_summary": "Rotating swing shifts disrupt sleep onset and duration. Activity is mostly on-the-clock walking; structured exercise rarely fits in.",
+      "profile": {
+        "age_band": [40, 46],
+        "sex": "M",
+        "resting_hr_bpm": 76,
+        "steps_daily_avg": 5400,
+        "sleep_hours_avg": 5.8,
+        "active_minutes_weekly": 80,
+        "workout_sessions_weekly": 1
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Slightly elevated within ostchega_2011 adult range; chronic short sleep associated with elevated RHR per avram_2019.",
+        "steps_daily_avg": "tudor_locke_2011 'low active'; manual-occupation walking contributes most volume.",
+        "sleep_hours_avg": "Within short-sleep band; shockey_2017_shift documents elevated short-sleep prevalence in shift-work occupations; nhis_2020_sleep 31.1% of men 45-64 sleep <7h.",
+        "active_minutes_weekly": "Below cdc_pa_guidelines_2018 150-min threshold; shift schedules complicate structured exercise.",
+        "workout_sessions_weekly": "Does not meet aerobic or muscle-strengthening guideline frequency."
+      }
+    },
+    {
+      "id": "p_010",
+      "label": "yoga + hiking, F, age 45-52",
+      "narrative_summary": "Three yoga classes plus 1-2 longer hikes weekly. Lifts light weights twice a week. Sleep is consistent thanks to a stable bedtime.",
+      "profile": {
+        "age_band": [45, 52],
+        "sex": "F",
+        "resting_hr_bpm": 65,
+        "steps_daily_avg": 8800,
+        "sleep_hours_avg": 7.5,
+        "active_minutes_weekly": 240,
+        "workout_sessions_weekly": 4
+      },
+      "source_notes": {
+        "resting_hr_bpm": "Within avram_2019 active-female-midlife range; moderate aerobic conditioning.",
+        "steps_daily_avg": "tudor_locke_2011 'somewhat active'.",
+        "sleep_hours_avg": "Within nhis_2020_sleep healthy range; women 45-64 30.7% <7h, so this persona is in the 69% who meet guideline.",
+        "active_minutes_weekly": "Exceeds cdc_pa_guidelines_2018 150-min threshold.",
+        "workout_sessions_weekly": "Meets muscle-strengthening 2-day minimum (yoga + light weights)."
+      }
+    }
+  ]
+}
